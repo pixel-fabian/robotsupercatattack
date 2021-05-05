@@ -1,7 +1,7 @@
 {
   "name": "robotsupercatattack",
   "version": "0.0.1",
-  "description": "Meow",
+  "description": "A sidescrolling endless runner browser game build with phaser.",
   "main": "index.html",
   "scripts": {
     "clean": "rm -rf ./dist/js",

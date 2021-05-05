@@ -5,7 +5,7 @@ const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO, // WebGL if available
   title: 'Blueprint',
   width: 800,
-  height: 600,
+  height: 533,
   parent: 'game',
   scene: [SceneGame],
 };
