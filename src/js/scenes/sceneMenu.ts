@@ -1,12 +1,10 @@
 import Phaser from 'phaser'
 
-export default class SceneGame extends Phaser.Scene {
-  private platforms?: Phaser.Physics.Arcade.StaticGroup;
-  private player?: Phaser.Physics.Arcade.Sprite;
+export default class SceneMenu extends Phaser.Scene {
 
   constructor() {
     super({
-      key: 'SceneGame',
+      key: 'SceneMenu',
     });
   }
 

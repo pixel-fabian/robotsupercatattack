@@ -1,5 +1,6 @@
-import 'phaser';
-import { SceneGame } from './scenes/SceneGame';
+import Phaser from 'phaser'
+import SceneMenu from './scenes/sceneMenu';
+import SceneGame from './scenes/SceneGame';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO, // WebGL if available
@@ -7,6 +8,12 @@ const config: Phaser.Types.Core.GameConfig = {
   width: 800,
   height: 533,
   parent: 'game',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 200 }
+    }
+  },
   scene: [SceneGame],
 };
 
