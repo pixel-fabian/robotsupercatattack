@@ -1,9 +1,7 @@
 # Robot SuperCat Attack 🎮
 
 ![GitHub](https://img.shields.io/github/license/pixel-fabian/robotsupercatattack?color=green&style=flat-square)
-
 ![GitHub top language](https://img.shields.io/github/languages/top/pixel-fabian/robotsupercatattack?style=flat-square)
-
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/pixel-fabian/robotsupercatattack?style=flat-square)
 
 ---
