@@ -18,10 +18,13 @@ export default class SceneGame extends Phaser.Scene {
     console.log('init()');
   }
 
-  preload(): void { }
+  preload(): void {
+    this.load.image('platform_straight', 'assets/img/platform_straight.png');
+  }
 
   create(): void {
-    this.add.text(350, 260, 'Hello World', { fontFamily: 'sans-serif', color: '#fff' });
+    this.platforms = this.physics.add.staticGroup();
+    this.platforms.create(300, 300, 'platform_straight');
   }
 
   update(): void { }
