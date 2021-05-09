@@ -41,7 +41,9 @@ export default class SceneGame extends Phaser.Scene {
     // store the width and height of the game screen
     // const width = this.scale.width;
     const height = this.scale.height;
-    this.add.image(0, 0, Textures.background).setOrigin(0, 0);
+    this.add.image(0, 0, Textures.background)
+      .setOrigin(0, 0)
+      .setScrollFactor(0, 0);
 
     this.platforms = this.physics.add.staticGroup();
     this.platforms.create(180, 300, Textures.platformStraight);
