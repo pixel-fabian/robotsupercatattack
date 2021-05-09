@@ -1,8 +1,22 @@
 import Phaser from 'phaser'
 
 export default class SceneGame extends Phaser.Scene {
+  static stateJump = 'jump';
+  static stateRun = 'run';
+  static stateDie = 'die';
+
   private platforms?: Phaser.Physics.Arcade.StaticGroup;
-  private cat?: Phaser.Physics.Arcade.Sprite;
+  private cat?: {
+    'run': Phaser.Physics.Arcade.Sprite,
+    'jump': Phaser.Physics.Arcade.Sprite,
+    'die': Phaser.Physics.Arcade.Sprite,
+    'velocity': number,
+  } = {
+      'run': null,
+      'jump': null,
+      'die': null,
+      'velocity': 200
+    }
 
   constructor() {
     super({
@@ -29,19 +43,22 @@ export default class SceneGame extends Phaser.Scene {
     this.add.image(0, 0, 'background').setOrigin(0, 0);
 
     this.platforms = this.physics.add.staticGroup();
-    this.platforms.create(200, 300, 'platform_straight');
+    this.platforms.create(180, 300, 'platform_straight');
 
-    this.cat = this.physics.add.sprite(80, 250, 'cat_walking').setScale(0.2);
-    this.cat.setBounce(0.1);
-    this.cat.setCollideWorldBounds(true);
+    this.cat.run = this.physics.add.sprite(80, 250, 'cat_walking').setScale(0.2);
+    this.cat.run.setBounce(0.1);
+    this.cat.run.setCollideWorldBounds(true);
     this.createAnimationsCat();
-    this.cat.play("walk");
+    this.cat.run.play("run");
+    this.cat.run.setVelocityX(this.cat.velocity);
 
     // add collision
-    this.physics.add.collider(this.cat, this.platforms);
+    this.physics.add.collider(this.cat.run, this.platforms);
   }
 
-  update(): void { }
+  update(): void {
+
+  }
 
   //////////////////////////////////////////////////
   // Private methods                              //
@@ -49,7 +66,7 @@ export default class SceneGame extends Phaser.Scene {
 
   private createAnimationsCat() {
     this.anims.create({
-      key: 'walk',
+      key: 'run',
       frames: this.anims.generateFrameNumbers('cat_walking', {
         start: 0, end: 4
       }),
@@ -57,4 +74,5 @@ export default class SceneGame extends Phaser.Scene {
       repeat: -1 // -1: infinity
     });
   }
+
 }

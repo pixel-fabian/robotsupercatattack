@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist/js",
     "build": "npm run clean && webpack",
-    "dev": "npm run clean && webpack --watch",
+    "dev": "npm run clean && webpack --watch --progress",
     "lint": "eslint ./src --ext .ts && prettier --check --ignore-path .gitignore ./src/",
     "lint:fix": "eslint ./src/**/*.ts --fix && prettier --ignore-path .gitignore --write ./src/"
   },

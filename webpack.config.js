@@ -1,6 +1,9 @@
 const path = require('path');
+const debug = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   entry: './src/js/game.ts',
+  mode: debug ? 'development' : 'production',
   module: {
     rules: [
       {
@@ -17,5 +20,4 @@ module.exports = {
     filename: 'game.js',
     path: path.resolve(__dirname, 'dist/js')
   },
-  mode: 'development'
 };
