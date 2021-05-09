@@ -1,10 +1,8 @@
 import Phaser from 'phaser'
+import Textures from '../constants/Textures'
+import States from '../constants/States'
 
 export default class SceneGame extends Phaser.Scene {
-  static stateJump = 'jump';
-  static stateRun = 'run';
-  static stateDie = 'die';
-
   private platforms?: Phaser.Physics.Arcade.StaticGroup;
   private cat?: {
     'run': Phaser.Physics.Arcade.Sprite,
@@ -31,8 +29,8 @@ export default class SceneGame extends Phaser.Scene {
   init(): void { }
 
   preload(): void {
-    this.load.image('background', 'assets/img/background.jpg');
-    this.load.image('platform_straight', 'assets/img/platform_straight.png');
+    this.load.image(Textures.background, 'assets/img/background.jpg');
+    this.load.image(Textures.platformStraight, 'assets/img/platform_straight.png');
     this.load.spritesheet('cat_walking',
       'assets/img/cat_walking.png',
       { frameWidth: 360, frameHeight: 300 }
@@ -40,13 +38,15 @@ export default class SceneGame extends Phaser.Scene {
   }
 
   create(): void {
-    this.add.image(0, 0, 'background').setOrigin(0, 0);
+    // store the width and height of the game screen
+    // const width = this.scale.width;
+    const height = this.scale.height;
+    this.add.image(0, 0, Textures.background).setOrigin(0, 0);
 
     this.platforms = this.physics.add.staticGroup();
-    this.platforms.create(180, 300, 'platform_straight');
+    this.platforms.create(180, 300, Textures.platformStraight);
 
     this.cat.run = this.physics.add.sprite(80, 250, 'cat_walking').setScale(0.2);
-    this.cat.run.setBounce(0.1);
     this.cat.run.setCollideWorldBounds(true);
     this.createAnimationsCat();
     this.cat.run.play("run");
@@ -54,6 +54,10 @@ export default class SceneGame extends Phaser.Scene {
 
     // add collision
     this.physics.add.collider(this.cat.run, this.platforms);
+
+    // make camera follow the cat
+    this.cameras.main.startFollow(this.cat.run);
+    this.cameras.main.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height);
   }
 
   update(): void {
