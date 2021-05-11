@@ -31,9 +31,9 @@ export default class SceneGame extends Phaser.Scene {
   preload(): void {
     this.load.image(Textures.background, 'assets/img/background.jpg');
     this.load.image(Textures.platformStraight, 'assets/img/platform_straight.png');
-    this.load.spritesheet('cat_walking',
-      'assets/img/cat_walking.png',
-      { frameWidth: 360, frameHeight: 300 }
+    this.load.spritesheet(Textures.catRun,
+      'assets/img/cat_run.png',
+      { frameWidth: 360, frameHeight: 200 }
     );
   }
 
@@ -48,7 +48,7 @@ export default class SceneGame extends Phaser.Scene {
     this.platforms = this.physics.add.staticGroup();
     this.platforms.create(180, 300, Textures.platformStraight);
 
-    this.cat.run = this.physics.add.sprite(80, 250, 'cat_walking').setScale(0.2);
+    this.cat.run = this.physics.add.sprite(80, 250, Textures.catRun).setScale(0.3);
     this.cat.run.setCollideWorldBounds(true);
     this.createAnimationsCat();
     this.cat.run.play("run");
@@ -73,7 +73,7 @@ export default class SceneGame extends Phaser.Scene {
   private createAnimationsCat() {
     this.anims.create({
       key: 'run',
-      frames: this.anims.generateFrameNumbers('cat_walking', {
+      frames: this.anims.generateFrameNumbers(Textures.catRun, {
         start: 0, end: 4
       }),
       frameRate: 5,
