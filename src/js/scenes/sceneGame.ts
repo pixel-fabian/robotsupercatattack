@@ -11,7 +11,7 @@ export default class SceneGame extends Phaser.Scene {
   } = {
       'sprite': null,
       'velocityRun': 200,
-      'velocityJump': -200,
+      'velocityJump': -400,
     };
   private state: String;
   private keySpace: Phaser.Input.Keyboard.Key;
@@ -109,7 +109,6 @@ export default class SceneGame extends Phaser.Scene {
 
   private jump() {
     if (this.state === StateKeys.jump) return;
-    console.log('jump');
     this.state = StateKeys.jump;
     this.cat.sprite.play(StateKeys.jump);
     this.cat.sprite.setVelocityY(this.cat.velocityJump);
