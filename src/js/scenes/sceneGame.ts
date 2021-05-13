@@ -33,7 +33,7 @@ export default class SceneGame extends Phaser.Scene {
     this.load.image(TextureKeys.background, 'assets/img/background.jpg');
     this.load.image(TextureKeys.platformStraight, 'assets/img/platform_straight.png');
     this.load.spritesheet(TextureKeys.cat,
-      'assets/img/cat_run.png',
+      'assets/img/cat.png',
       { frameWidth: 360, frameHeight: 200 }
     );
   }
@@ -100,7 +100,7 @@ export default class SceneGame extends Phaser.Scene {
     this.anims.create({
       key: StateKeys.jump,
       frames: this.anims.generateFrameNumbers(TextureKeys.cat, {
-        start: 0, end: 4
+        start: 5, end: 5
       }),
       frameRate: 5,
       repeat: 1
