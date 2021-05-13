@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-enum States {
+enum StateKeys {
   jump = 'jump',
   run = 'run',
   die = 'die',
 }
 
-export default States
+export default StateKeys;

@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-enum States {
+enum TextureKeys {
   background = 'background',
   platformStraight = 'platform_straight',
-  catRun = 'cat_run'
+  cat = 'cat',
 }
 
-export default States
+export default TextureKeys
