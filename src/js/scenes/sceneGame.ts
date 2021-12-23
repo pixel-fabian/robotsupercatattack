@@ -14,6 +14,8 @@ export default class SceneGame extends Phaser.Scene {
       'velocityJump': -400,
     };
   private state: String;
+  private score = 0;
+  private scoreText: Phaser.GameObjects.Text;
   private keySpace: Phaser.Input.Keyboard.Key;
   private keyD: Phaser.Input.Keyboard.Key;
 
@@ -40,7 +42,7 @@ export default class SceneGame extends Phaser.Scene {
 
   create(): void {
     // store the width and height of the game screen
-    // const width = this.scale.width;
+    const width = this.scale.width;
     const height = this.scale.height;
     // add background
     this.add.image(0, 0, TextureKeys.background)
@@ -49,9 +51,9 @@ export default class SceneGame extends Phaser.Scene {
     // create platforms
     this.platforms = this.physics.add.staticGroup();
     this.platforms.create(180, 300, TextureKeys.platformStraight);
+    this.platforms.create(680, 300, TextureKeys.platformStraight);
     // create cat
     this.cat.sprite = this.physics.add.sprite(80, 250, TextureKeys.cat).setScale(0.3);
-    this.cat.sprite.setCollideWorldBounds(true);
     this.createAnimationsCat();
     this.cat.sprite.play("run");
     this.cat.sprite.setVelocityX(this.cat.velocityRun);
@@ -73,6 +75,8 @@ export default class SceneGame extends Phaser.Scene {
         this.cat.sprite.play(StateKeys.run);
       }
     }, this);
+    // text
+    this.scoreText = this.add.text(0, 5, `${this.score}`, { fontFamily: 'sans-serif' });
   }
 
   update(): void {
@@ -82,6 +86,11 @@ export default class SceneGame extends Phaser.Scene {
     if (this.keyD.isDown) {
       console.log('Dash');
     }
+    this.spawnPlatform();
+    // update score
+    this.score++;
+    this.scoreText.setText(`${this.score}`);
+    this.scoreText.x = this.cat.sprite.x;
   }
 
   //////////////////////////////////////////////////
@@ -112,6 +121,10 @@ export default class SceneGame extends Phaser.Scene {
     this.state = StateKeys.jump;
     this.cat.sprite.play(StateKeys.jump);
     this.cat.sprite.setVelocityY(this.cat.velocityJump);
+  }
+
+  private spawnPlatform() {
+    //this.platforms.create(180, 300, TextureKeys.platformStraight);
   }
 
 }
