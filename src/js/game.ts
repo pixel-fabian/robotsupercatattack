@@ -16,6 +16,7 @@ const config: Phaser.Types.Core.GameConfig = {
       gravity: { y: 400 },
     },
   },
+  pixelArt: true,
   scene: [SceneLoad, SceneMenu, SceneGame],
 };
 

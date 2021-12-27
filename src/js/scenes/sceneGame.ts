@@ -7,6 +7,8 @@ import Platforms from '../objects/platforms';
 export default class SceneGame extends Phaser.Scene {
   private platforms?: Platforms;
   private player?: Player;
+  private background?: Phaser.GameObjects.TileSprite;
+  private background_parallax?: Phaser.GameObjects.TileSprite;
 
   private score = 0;
   private scoreText: Phaser.GameObjects.Text;
@@ -26,7 +28,11 @@ export default class SceneGame extends Phaser.Scene {
   init(): void {}
 
   preload(): void {
-    this.load.image(TextureKeys.BACKGROUND, 'assets/img/background.jpg');
+    this.load.image(TextureKeys.BACKGROUND, 'assets/img/clouds_bg.png');
+    this.load.image(
+      TextureKeys.BACKGROUND_PARALLAX,
+      'assets/img/clouds_fg.png',
+    );
     this.load.image(
       TextureKeys.PLATFORM_STRAIGHT,
       'assets/img/platform_straight.png',
@@ -42,9 +48,15 @@ export default class SceneGame extends Phaser.Scene {
     const width = this.scale.width;
     const height = this.scale.height;
     // add background
-    this.add
-      .image(0, 0, TextureKeys.BACKGROUND)
+    this.background = this.add
+      .tileSprite(0, 0, 400, 267, TextureKeys.BACKGROUND)
       .setOrigin(0, 0)
+      .setScale(2)
+      .setScrollFactor(0, 0);
+    this.background_parallax = this.add
+      .tileSprite(0, 0, 400, 267, TextureKeys.BACKGROUND_PARALLAX)
+      .setOrigin(0, 0)
+      .setScale(2)
       .setScrollFactor(0, 0);
     // create platforms
     this.platforms = new Platforms(this.physics.world, this);
@@ -67,6 +79,8 @@ export default class SceneGame extends Phaser.Scene {
   }
 
   update(): void {
+    this.background.tilePositionX += 0.15;
+    this.background_parallax.tilePositionX += 0.3;
     if (this.keySpace.isDown) {
       this.player.jump();
     }
