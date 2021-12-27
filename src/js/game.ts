@@ -1,4 +1,5 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
+import SceneLoad from './scenes/sceneLoad';
 import SceneMenu from './scenes/sceneMenu';
 import SceneGame from './scenes/sceneGame';
 
@@ -11,10 +12,11 @@ const config: Phaser.Types.Core.GameConfig = {
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 400 }
-    }
+      debug: true,
+      gravity: { y: 400 },
+    },
   },
-  scene: [SceneGame],
+  scene: [SceneLoad, SceneMenu, SceneGame],
 };
 
 window.onload = () => {

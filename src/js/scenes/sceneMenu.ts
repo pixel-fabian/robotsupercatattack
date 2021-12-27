@@ -1,10 +1,10 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
+import SceneKeys from '../constants/SceneKeys';
 
 export default class SceneMenu extends Phaser.Scene {
-
   constructor() {
     super({
-      key: 'SceneMenu',
+      key: SceneKeys.MENU,
     });
   }
 
@@ -12,17 +12,33 @@ export default class SceneMenu extends Phaser.Scene {
   // LIFECYCLE (init, preload, create, update)    //
   //////////////////////////////////////////////////
 
-  init(): void {
-    console.log('init()');
-  }
+  init(): void {}
 
-  preload(): void { }
+  preload(): void {}
 
   create(): void {
-    this.add.text(350, 260, 'Hello World', { fontFamily: 'sans-serif', color: '#fff' });
+    const buttonPlay = this.add.text(350, 200, '<Play>', {
+      fontFamily: 'sans-serif',
+      color: '#fff',
+    });
+    buttonPlay.setInteractive();
+    buttonPlay.on('pointerdown', () => {
+      console.log('Play');
+      this.scene.start(SceneKeys.GAME);
+    });
+
+    const buttonHighscore = this.add.text(335, 250, '<Highscore>', {
+      fontFamily: 'sans-serif',
+      color: '#fff',
+    });
+    buttonHighscore.setInteractive();
+    buttonHighscore.on('pointerdown', () => {
+      console.log('Highscore');
+      this.scene.start(SceneKeys.HIGHSCORE);
+    });
   }
 
-  update(): void { }
+  update(): void {}
 
   //////////////////////////////////////////////////
   // Private methods                              //
