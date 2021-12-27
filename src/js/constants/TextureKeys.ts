@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 enum TextureKeys {
-  background = 'background',
-  platformStraight = 'platform_straight',
-  cat = 'cat',
+  BACKGROUND = 'background',
+  PLATFORM_STRAIGHT = 'platform_straight',
+  CAT = 'cat',
 }
 
-export default TextureKeys
+export default TextureKeys;
