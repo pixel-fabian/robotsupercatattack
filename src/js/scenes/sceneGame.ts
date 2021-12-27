@@ -74,7 +74,8 @@ export default class SceneGame extends Phaser.Scene {
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     // text
     this.scoreText = this.add.text(0, 5, `${this.score}`, {
-      fontFamily: 'sans-serif',
+      fontFamily: 'BitPotion',
+      fontSize: '25px',
     });
   }
 

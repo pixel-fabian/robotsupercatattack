@@ -17,9 +17,10 @@ export default class SceneMenu extends Phaser.Scene {
   preload(): void {}
 
   create(): void {
-    const buttonPlay = this.add.text(350, 200, '<Play>', {
-      fontFamily: 'sans-serif',
+    const buttonPlay = this.add.text(350, 200, '< Play >', {
+      fontFamily: 'BitPotion',
       color: '#fff',
+      fontSize: '35px',
     });
     buttonPlay.setInteractive();
     buttonPlay.on('pointerdown', () => {
@@ -27,9 +28,10 @@ export default class SceneMenu extends Phaser.Scene {
       this.scene.start(SceneKeys.GAME);
     });
 
-    const buttonHighscore = this.add.text(335, 250, '<Highscore>', {
-      fontFamily: 'sans-serif',
+    const buttonHighscore = this.add.text(325, 250, '< Highscore >', {
+      fontFamily: 'BitPotion',
       color: '#fff',
+      fontSize: '35px',
     });
     buttonHighscore.setInteractive();
     buttonHighscore.on('pointerdown', () => {
