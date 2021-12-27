@@ -2,9 +2,10 @@ import Phaser from 'phaser';
 import SceneKeys from '../constants/SceneKeys';
 import TextureKeys from '../constants/TextureKeys';
 import Player from '../objects/player';
+import Platforms from '../objects/platforms';
 
 export default class SceneGame extends Phaser.Scene {
-  private platforms?: Phaser.Physics.Arcade.StaticGroup;
+  private platforms?: Platforms;
   private player?: Player;
 
   private score = 0;
@@ -46,9 +47,7 @@ export default class SceneGame extends Phaser.Scene {
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
     // create platforms
-    this.platforms = this.physics.add.staticGroup();
-    this.platforms.create(180, 300, TextureKeys.PLATFORM_STRAIGHT);
-    this.platforms.create(680, 300, TextureKeys.PLATFORM_STRAIGHT);
+    this.platforms = new Platforms(this.physics.world, this);
     // create player
     this.player = new Player(this, 80, 250, TextureKeys.CAT).setScale(0.3);
     // add collision
@@ -74,18 +73,18 @@ export default class SceneGame extends Phaser.Scene {
     if (this.keyD.isDown) {
       console.log('Dash');
     }
-    this.spawnPlatform();
+    this.platforms.spawnPlatform();
     // update score
-    this.score++;
-    this.scoreText.setText(`${this.score}`);
-    this.scoreText.x = this.player.x;
+    this._updateScore();
   }
 
   //////////////////////////////////////////////////
   // Private methods                              //
   //////////////////////////////////////////////////
 
-  private spawnPlatform() {
-    //this.platforms.create(180, 300, TextureKeys.platformStraight);
+  _updateScore() {
+    this.score++;
+    this.scoreText.setText(`${this.score}`);
+    this.scoreText.x = this.player.x;
   }
 }

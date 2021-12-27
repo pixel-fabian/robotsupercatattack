@@ -4,7 +4,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   /**
    * Velocity for running
    */
-  private runVelocity: number = 0.6;
+  private runVelocity: number = 150;
 
   /**
    * States of the player

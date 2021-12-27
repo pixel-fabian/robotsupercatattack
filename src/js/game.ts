@@ -20,6 +20,5 @@ const config: Phaser.Types.Core.GameConfig = {
 };
 
 window.onload = () => {
-  // eslint-disable-next-line no-unused-vars
-  const game = new Phaser.Game(config);
+  new Phaser.Game(config);
 };
