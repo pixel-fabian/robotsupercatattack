@@ -4,7 +4,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   /**
    * Velocity for running
    */
-  private runVelocity: number = 150;
+  private runVelocity: number = 180;
 
   /**
    * States of the player
@@ -60,9 +60,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       key: this.StateKeys.RUN,
       frames: this.anims.generateFrameNumbers(TextureKeys.CAT, {
         start: 0,
-        end: 4,
+        end: 6,
       }),
-      frameRate: 5,
+      frameRate: 10,
       repeat: -1, // -1: infinity
     });
     this.anims.create({

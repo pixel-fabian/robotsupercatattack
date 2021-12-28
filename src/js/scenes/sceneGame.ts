@@ -37,9 +37,9 @@ export default class SceneGame extends Phaser.Scene {
       TextureKeys.PLATFORM_STRAIGHT,
       'assets/img/platform_straight.png',
     );
-    this.load.spritesheet(TextureKeys.CAT, 'assets/img/cat.png', {
-      frameWidth: 360,
-      frameHeight: 200,
+    this.load.spritesheet(TextureKeys.CAT, 'assets/img/robocat_sprite.png', {
+      frameWidth: 50,
+      frameHeight: 28,
     });
   }
 
@@ -61,7 +61,7 @@ export default class SceneGame extends Phaser.Scene {
     // create platforms
     this.platforms = new Platforms(this.physics.world, this);
     // create player
-    this.player = new Player(this, 80, 250, TextureKeys.CAT).setScale(0.3);
+    this.player = new Player(this, 80, 250, TextureKeys.CAT).setScale(2);
     // add collision
     this.physics.add.collider(this.player, this.platforms);
     // make camera follow the cat
