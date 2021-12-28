@@ -12,6 +12,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   private StateKeys = {
     SINGLE_JUMP: 'singleJump',
     DOUBLE_JUMP: 'doubleJump',
+    FALL: 'fall',
     RUN: 'run',
     DIE: 'die',
   };
@@ -36,8 +37,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
 
     this.createAnimations();
-    this.play(this.StateKeys.RUN);
-    this.setVelocityX(this.runVelocity);
+    this.run();
     this.addEventHandler();
   }
 
@@ -46,9 +46,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       'animationcomplete',
       (animation) => {
         if (animation.key === this.StateKeys.SINGLE_JUMP) {
-          // Back to running
-          this.state = this.StateKeys.RUN;
-          this.play(this.StateKeys.RUN);
+          // After JumpState
+          this.state = this.StateKeys.FALL;
+          //this.play(this.StateKeys.RUN);
         }
       },
       this,
@@ -77,9 +77,29 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   jump() {
-    if (this.state === this.StateKeys.SINGLE_JUMP) return;
-    this.state = this.StateKeys.SINGLE_JUMP;
-    this.play(this.StateKeys.SINGLE_JUMP);
-    this.setVelocityY(this.jumpVelocity.singleJump);
+    switch (this.state) {
+      case this.StateKeys.DOUBLE_JUMP:
+        // do nothing
+        return;
+      case this.StateKeys.SINGLE_JUMP:
+        //do double jump
+        this.state = this.StateKeys.DOUBLE_JUMP;
+        this.play(this.StateKeys.SINGLE_JUMP);
+        this.setVelocityY(this.jumpVelocity.doubleJump);
+        break;
+      default:
+        //do single jump
+        this.state = this.StateKeys.SINGLE_JUMP;
+        this.play(this.StateKeys.SINGLE_JUMP);
+        this.setVelocityY(this.jumpVelocity.singleJump);
+        break;
+    }
+  }
+
+  run() {
+    if (this.state === this.StateKeys.RUN) return;
+    this.state = this.StateKeys.RUN;
+    this.play(this.StateKeys.RUN);
+    this.setVelocityX(this.runVelocity);
   }
 }
