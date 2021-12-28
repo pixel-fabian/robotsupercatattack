@@ -3,6 +3,7 @@ enum SceneKeys {
   LOAD = 'sceneLoad',
   MENU = 'sceneMenu',
   GAME = 'sceneGame',
+  GAMEOVER = 'sceneGameover',
   HIGHSCORE = 'sceneHighscore',
 }
 
