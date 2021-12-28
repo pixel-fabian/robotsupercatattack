@@ -93,6 +93,9 @@ export default class SceneGame extends Phaser.Scene {
       console.log('Dash');
     }
     this.platforms.spawnPlatform();
+    if (this.player.y >= this.scale.height) {
+      this.gameOver();
+    }
     // update score
     this._updateScore();
   }
@@ -102,7 +105,9 @@ export default class SceneGame extends Phaser.Scene {
   //////////////////////////////////////////////////
 
   gameOver() {
-    this.scene.start(SceneKeys.GAMEOVER);
+    this.player.die();
+    this.scene.pause();
+    //this.scene.start(SceneKeys.GAMEOVER);
   }
 
   //////////////////////////////////////////////////
