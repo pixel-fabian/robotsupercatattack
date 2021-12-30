@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 enum TextureKeys {
-  BACKGROUND = 'background',
-  BACKGROUND_PARALLAX = 'background_parallax',
+  BACKGROUND_BG = 'background_bg',
+  BACKGROUND_MG = 'background_mg',
+  BACKGROUND_FG = 'background_fg',
   PLATFORM_STRAIGHT = 'platform_straight',
   CAT = 'cat',
 }
