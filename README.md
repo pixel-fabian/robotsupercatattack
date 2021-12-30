@@ -10,11 +10,11 @@ A sidescrolling endless runner browser game build with [phaser](https://phaser.i
 
 ## Play
 
-The game is not released yet. As soon as there is a playable version, there will be a link here.
+> The game is not released yet. As soon as there is a playable version, there will be a link here.
 
-### Gameplay 
+### Gameplay
 
-_Robot SuperCat Attack_ is a endless running sidescroller jump'n'run game. You control a 😼 and try to stay alive as long as possible.
+_Robot SuperCat Attack_ is a endless running sidescroller jump'n'run game. You control a cat 😼 and try to stay alive as long as possible.
 
 - Jump: Space
 - Dash: D
