@@ -62,7 +62,7 @@ export default class SceneGame extends Phaser.Scene {
     // create platforms
     this.platforms = new Platforms(this.physics.world, this);
     // create player
-    this.player = new Player(this, 80, 250, TextureKeys.CAT).setScale(2);
+    this.player = new Player(this, 100, 250, TextureKeys.CAT).setScale(2);
     // add collision
     this.physics.add.collider(
       this.player,
@@ -71,6 +71,7 @@ export default class SceneGame extends Phaser.Scene {
     );
     // make camera follow the cat
     this.cameras.main.startFollow(this.player);
+    this.cameras.main.setFollowOffset(-300, 0);
     this.cameras.main.setBounds(0, 0, Number.MAX_SAFE_INTEGER, height);
     // get keys
     this.keySpace = this.input.keyboard.addKey(
@@ -80,7 +81,7 @@ export default class SceneGame extends Phaser.Scene {
     // text
     this.scoreText = this.add.text(0, 5, `${this.score}`, {
       fontFamily: 'BitPotion',
-      fontSize: '25px',
+      fontSize: '35px',
     });
   }
 
@@ -119,7 +120,7 @@ export default class SceneGame extends Phaser.Scene {
   _updateScore() {
     this.score++;
     this.scoreText.setText(`${this.score}`);
-    this.scoreText.x = this.player.x;
+    this.scoreText.x = this.player.x + 300;
   }
 
   _onCollidePlayerPlatform(player, platform) {
