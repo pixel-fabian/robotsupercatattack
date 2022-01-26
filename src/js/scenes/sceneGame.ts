@@ -32,10 +32,7 @@ export default class SceneGame extends Phaser.Scene {
     this.load.image(TextureKeys.BACKGROUND_BG, 'assets/img/clouds_bg.png');
     this.load.image(TextureKeys.BACKGROUND_MG, 'assets/img/clouds_mg.png');
     this.load.image(TextureKeys.BACKGROUND_FG, 'assets/img/clouds_fg.png');
-    this.load.image(
-      TextureKeys.PLATFORM_STRAIGHT,
-      'assets/img/platform_straight_01.png',
-    );
+    this.load.image(TextureKeys.PLATFORM_01, 'assets/img/platform_01.png');
     this.load.spritesheet(TextureKeys.CAT, 'assets/img/robocat_sprite.png', {
       frameWidth: 100,
       frameHeight: 64,

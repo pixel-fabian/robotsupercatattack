@@ -16,9 +16,8 @@ export default class Platforms extends Phaser.Physics.Arcade.StaticGroup {
     scene.add.existing(this);
 
     // Create first platform where the player starts
-    const newPlatform = this.create(180, 300, TextureKeys.PLATFORM_STRAIGHT);
-    newPlatform.body.setSize(128, 50);
-    newPlatform.setScale(2.5);
+    const newPlatform = this.create(180, 400, TextureKeys.PLATFORM_01);
+    newPlatform.body.setSize(700, 250);
   }
 
   spawnPlatform() {
@@ -29,14 +28,9 @@ export default class Platforms extends Phaser.Physics.Arcade.StaticGroup {
     const camRightX = this.scene.scale.width + this.scene.cameras.main.scrollX;
     if (lastPlatform.x > camRightX) return;
 
-    const spawnX = lastPlatform.getRightCenter().x + 300;
-    const spawnY = 300;
-    const newPlatform = this.create(
-      spawnX,
-      spawnY,
-      TextureKeys.PLATFORM_STRAIGHT,
-    );
-    newPlatform.body.setSize(128, 50);
-    newPlatform.setScale(2.5);
+    const spawnX = lastPlatform.getRightCenter().x + 600;
+    const spawnY = 400;
+    const newPlatform = this.create(spawnX, spawnY, TextureKeys.PLATFORM_01);
+    newPlatform.body.setSize(700, 250);
   }
 }
