@@ -5,14 +5,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   /**
    * Velocity for running
    */
-  private runVelocity: number = 180;
+  private runVelocity: number = 350;
 
   /**
    * Velocity for jumps
    */
   private jumpVelocity = {
-    singleJump: -400,
-    doubleJump: -300,
+    singleJump: -500,
+    doubleJump: -350,
   };
 
   constructor(
