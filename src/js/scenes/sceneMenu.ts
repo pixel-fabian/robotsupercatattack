@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import SCENES from '../constants/SCENES';
+import SCENES from '../constants/SceneKeys';
 
 export default class SceneMenu extends Phaser.Scene {
   constructor() {

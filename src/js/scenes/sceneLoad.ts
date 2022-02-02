@@ -1,5 +1,5 @@
 import 'phaser';
-import SCENES from '../constants/SCENES';
+import SCENES from '../constants/SceneKeys';
 export default class SceneLoad extends Phaser.Scene {
   constructor() {
     super({

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import SCENES from '../constants/SCENES';
-import TEXTURES from '../constants/TEXTURES';
+import SCENES from '../constants/SceneKeys';
+import TEXTURES from '../constants/TextureKeys';
 import Player from '../objects/player';
 import Platforms from '../objects/platforms';
 
