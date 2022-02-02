@@ -1,4 +1,4 @@
-import TextureKeys from '../constants/TextureKeys';
+import TEXTURES from '../constants/TEXTURES';
 
 export default class Platforms extends Phaser.Physics.Arcade.StaticGroup {
   constructor(
@@ -16,7 +16,7 @@ export default class Platforms extends Phaser.Physics.Arcade.StaticGroup {
     scene.add.existing(this);
 
     // Create first platform where the player starts
-    const newPlatform = this.create(180, 400, TextureKeys.PLATFORM_01);
+    const newPlatform = this.create(180, 400, TEXTURES.PLATFORM_01);
     newPlatform.body.setSize(700, 250);
   }
 
@@ -30,7 +30,7 @@ export default class Platforms extends Phaser.Physics.Arcade.StaticGroup {
 
     const spawnX = lastPlatform.getRightCenter().x + 600;
     const spawnY = 400;
-    const newPlatform = this.create(spawnX, spawnY, TextureKeys.PLATFORM_01);
+    const newPlatform = this.create(spawnX, spawnY, TEXTURES.PLATFORM_01);
     newPlatform.body.setSize(700, 250);
   }
 }

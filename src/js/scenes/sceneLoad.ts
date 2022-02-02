@@ -1,9 +1,9 @@
 import 'phaser';
-import SceneKeys from '../constants/SceneKeys';
+import SCENES from '../constants/SCENES';
 export default class SceneLoad extends Phaser.Scene {
   constructor() {
     super({
-      key: SceneKeys.LOAD,
+      key: SCENES.LOAD,
     });
   }
 
@@ -20,7 +20,7 @@ export default class SceneLoad extends Phaser.Scene {
       fontFamily: 'sans-serif',
       color: '#fff',
     });
-    this.scene.start(SceneKeys.MENU);
+    this.scene.start(SCENES.MENU);
   }
 
   update(): void {}

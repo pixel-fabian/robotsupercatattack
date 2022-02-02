@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-enum StateKeys {
+enum STATES {
   SINGLE_JUMP = 'singleJump',
   DOUBLE_JUMP = 'doubleJump',
   FALL = 'fall',
@@ -7,4 +7,4 @@ enum StateKeys {
   DIE = 'die',
 }
 
-export default StateKeys;
+export default STATES;

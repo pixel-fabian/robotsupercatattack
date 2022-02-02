@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-enum TextureKeys {
+enum TEXTURES {
   BACKGROUND_BG = 'background_bg',
   BACKGROUND_MG = 'background_mg',
   BACKGROUND_FG = 'background_fg',
@@ -7,4 +7,4 @@ enum TextureKeys {
   CAT = 'cat',
 }
 
-export default TextureKeys;
+export default TEXTURES;

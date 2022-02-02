@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-enum SceneKeys {
+enum SCENES {
   LOAD = 'sceneLoad',
   MENU = 'sceneMenu',
   GAME = 'sceneGame',
@@ -7,4 +7,4 @@ enum SceneKeys {
   HIGHSCORE = 'sceneHighscore',
 }
 
-export default SceneKeys;
+export default SCENES;

@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
-import SceneKeys from '../constants/SceneKeys';
+import SCENES from '../constants/SCENES';
 
 export default class SceneMenu extends Phaser.Scene {
   constructor() {
     super({
-      key: SceneKeys.MENU,
+      key: SCENES.MENU,
     });
   }
 
@@ -25,7 +25,7 @@ export default class SceneMenu extends Phaser.Scene {
     buttonPlay.setInteractive();
     buttonPlay.on('pointerdown', () => {
       console.log('Play');
-      this.scene.start(SceneKeys.GAME);
+      this.scene.start(SCENES.GAME);
     });
 
     const buttonHighscore = this.add.text(325, 250, '< Highscore >', {
@@ -36,7 +36,7 @@ export default class SceneMenu extends Phaser.Scene {
     buttonHighscore.setInteractive();
     buttonHighscore.on('pointerdown', () => {
       console.log('Highscore');
-      this.scene.start(SceneKeys.HIGHSCORE);
+      this.scene.start(SCENES.HIGHSCORE);
     });
   }
 
