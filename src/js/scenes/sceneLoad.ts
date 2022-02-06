@@ -38,6 +38,30 @@ export default class SceneLoad extends Phaser.Scene {
       frameWidth: 100,
       frameHeight: 64,
     });
+    this.load.spritesheet(
+      TEXTURES.BUTTON_PLAY,
+      'assets/img/button_02_play.png',
+      {
+        frameWidth: 120,
+        frameHeight: 32,
+      },
+    );
+    this.load.spritesheet(
+      TEXTURES.BUTTON_HIGHSCORE,
+      'assets/img/button_02_highscore.png',
+      {
+        frameWidth: 120,
+        frameHeight: 32,
+      },
+    );
+    this.load.spritesheet(
+      TEXTURES.BUTTON_CREDITS,
+      'assets/img/button_02_credits.png',
+      {
+        frameWidth: 120,
+        frameHeight: 32,
+      },
+    );
 
     // load all audio
     this.load.audio(AUDIO.MUSIC_MENU, [

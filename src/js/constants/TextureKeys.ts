@@ -6,6 +6,9 @@ enum TEXTURES {
   BACKGROUND_FG = 'background_fg',
   PLATFORM_01 = 'platform_01',
   CAT = 'cat',
+  BUTTON_PLAY = 'button_play',
+  BUTTON_HIGHSCORE = 'button_highscore',
+  BUTTON_CREDITS = 'button_credits',
 }
 
 export default TEXTURES;

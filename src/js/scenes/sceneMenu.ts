@@ -24,38 +24,14 @@ export default class SceneMenu extends Phaser.Scene {
     const music = this.sound.add(AUDIO.MUSIC_MENU, { loop: true });
     music.play();
     // buttons
-    const buttonPlay = this.add.text(350, 200, '< Play >', {
-      fontFamily: 'BitPotion',
-      color: '#fff',
-      fontSize: '35px',
-    });
-    buttonPlay.setInteractive();
-    buttonPlay.on('pointerdown', () => {
-      console.log('Play');
-      music.stop();
-      this.scene.start(SCENES.GAME);
-    });
-
-    const buttonHighscore = this.add.text(325, 250, '< Highscore >', {
-      fontFamily: 'BitPotion',
-      color: '#fff',
-      fontSize: '35px',
-    });
-    buttonHighscore.setInteractive();
-    buttonHighscore.on('pointerdown', () => {
-      console.log('Highscore');
-      this.scene.start(SCENES.HIGHSCORE);
-    });
-
-    const buttonCredits = this.add.text(335, 300, '< Credits >', {
-      fontFamily: 'BitPotion',
-      color: '#fff',
-      fontSize: '35px',
-    });
-    buttonCredits.setInteractive();
-    buttonCredits.on('pointerdown', () => {
-      this.scene.start(SCENES.CREDITS);
-    });
+    this._createMenuButton(400, 270, TEXTURES.BUTTON_PLAY, SCENES.GAME);
+    this._createMenuButton(
+      400,
+      340,
+      TEXTURES.BUTTON_HIGHSCORE,
+      SCENES.HIGHSCORE,
+    );
+    this._createMenuButton(400, 410, TEXTURES.BUTTON_CREDITS, SCENES.CREDITS);
   }
 
   update(): void {}
@@ -63,4 +39,55 @@ export default class SceneMenu extends Phaser.Scene {
   //////////////////////////////////////////////////
   // Private methods                              //
   //////////////////////////////////////////////////
+
+  /**
+   * Create interactive button to start another scene
+   * @param nX x coord
+   * @param nY y coord
+   * @param sTextureKey texture key
+   * @param sStartScene scene to start
+   * @returns
+   */
+  _createMenuButton(
+    nX: number,
+    nY: number,
+    sTextureKey: TEXTURES,
+    sStartScene: SCENES,
+  ) {
+    const button = this.add.sprite(nX, nY, sTextureKey, 0);
+    button.setScale(1.5);
+    const pressAnimKey = `press${sTextureKey}`;
+    this.anims.create({
+      key: pressAnimKey,
+      frames: this.anims.generateFrameNumbers(sTextureKey, {
+        start: 0,
+        end: 2,
+      }),
+      frameRate: 12,
+      repeat: 0,
+    });
+    button.setInteractive({ useHandCursor: true });
+    button.on('pointerover', () => {
+      button.setFrame(3);
+    });
+    button.on('pointerout', () => {
+      button.setFrame(0);
+    });
+    button.on('pointerdown', () => {
+      button.play(pressAnimKey);
+    });
+    button.on(
+      'animationcomplete',
+      (animation) => {
+        switch (animation.key) {
+          case pressAnimKey:
+            this.scene.start(sStartScene);
+            break;
+        }
+      },
+      this,
+    );
+
+    return button;
+  }
 }
