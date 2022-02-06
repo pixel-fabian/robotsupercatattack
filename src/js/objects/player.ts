@@ -1,5 +1,5 @@
-import TEXTURES from '../constants/TEXTURES';
-import STATES from '../constants/STATES';
+import TEXTURES from '../constants/TextureKeys';
+import STATES from '../constants/StateKeys';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   /**

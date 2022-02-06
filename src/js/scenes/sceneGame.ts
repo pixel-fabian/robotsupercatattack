@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import SCENES from '../constants/SceneKeys';
 import TEXTURES from '../constants/TextureKeys';
+import AUDIO from '../constants/AudioKeys';
 import Player from '../objects/player';
 import Platforms from '../objects/platforms';
 
@@ -28,18 +29,12 @@ export default class SceneGame extends Phaser.Scene {
 
   init(): void {}
 
-  preload(): void {
-    this.load.image(TEXTURES.BACKGROUND_BG, 'assets/img/clouds_bg.png');
-    this.load.image(TEXTURES.BACKGROUND_MG, 'assets/img/clouds_mg.png');
-    this.load.image(TEXTURES.BACKGROUND_FG, 'assets/img/clouds_fg.png');
-    this.load.image(TEXTURES.PLATFORM_01, 'assets/img/platform_01.png');
-    this.load.spritesheet(TEXTURES.CAT, 'assets/img/robocat_sprite.png', {
-      frameWidth: 100,
-      frameHeight: 64,
-    });
-  }
+  preload(): void {}
 
   create(): void {
+    // sounds
+    const music = this.sound.add(AUDIO.MUSIC_GAME, { loop: true });
+    music.play();
     // store the width and height of the game screen
     const width = this.scale.width;
     const height = this.scale.height;

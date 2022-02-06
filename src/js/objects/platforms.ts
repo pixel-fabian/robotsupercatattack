@@ -1,4 +1,4 @@
-import TEXTURES from '../constants/TEXTURES';
+import TEXTURES from '../constants/TextureKeys';
 
 export default class Platforms extends Phaser.Physics.Arcade.StaticGroup {
   constructor(

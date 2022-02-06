@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import SCENES from '../constants/SceneKeys';
+import AUDIO from '../constants/AudioKeys';
 
 export default class SceneMenu extends Phaser.Scene {
   constructor() {
@@ -17,6 +18,10 @@ export default class SceneMenu extends Phaser.Scene {
   preload(): void {}
 
   create(): void {
+    // sounds
+    const music = this.sound.add(AUDIO.MUSIC_MENU, { loop: true });
+    music.play();
+    // buttons
     const buttonPlay = this.add.text(350, 200, '< Play >', {
       fontFamily: 'BitPotion',
       color: '#fff',
@@ -25,6 +30,7 @@ export default class SceneMenu extends Phaser.Scene {
     buttonPlay.setInteractive();
     buttonPlay.on('pointerdown', () => {
       console.log('Play');
+      music.stop();
       this.scene.start(SCENES.GAME);
     });
 
