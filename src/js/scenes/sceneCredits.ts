@@ -1,11 +1,12 @@
-import Phaser from 'phaser';
+import 'phaser';
 import SCENES from '../constants/SceneKeys';
+import TEXTURES from '../constants/TextureKeys';
 import AUDIO from '../constants/AudioKeys';
 
-export default class SceneMenu extends Phaser.Scene {
+export default class SceneLoad extends Phaser.Scene {
   constructor() {
     super({
-      key: SCENES.MENU,
+      key: SCENES.CREDITS,
     });
   }
 
@@ -18,41 +19,31 @@ export default class SceneMenu extends Phaser.Scene {
   preload(): void {}
 
   create(): void {
-    // sounds
-    const music = this.sound.add(AUDIO.MUSIC_MENU, { loop: true });
-    music.play();
     // buttons
-    const buttonPlay = this.add.text(350, 200, '< Play >', {
+    const buttonPlay = this.add.text(50, 50, '< back', {
       fontFamily: 'BitPotion',
       color: '#fff',
       fontSize: '35px',
     });
     buttonPlay.setInteractive();
     buttonPlay.on('pointerdown', () => {
-      console.log('Play');
-      music.stop();
-      this.scene.start(SCENES.GAME);
+      this.scene.start(SCENES.MENU);
     });
-
-    const buttonHighscore = this.add.text(325, 250, '< Highscore >', {
+    //text
+    this.add.text(50, 330, 'A game by: pixel-fabian', {
       fontFamily: 'BitPotion',
       color: '#fff',
       fontSize: '35px',
     });
-    buttonHighscore.setInteractive();
-    buttonHighscore.on('pointerdown', () => {
-      console.log('Highscore');
-      this.scene.start(SCENES.HIGHSCORE);
-    });
-
-    const buttonCredits = this.add.text(335, 300, '< Credits >', {
+    this.add.text(50, 360, 'Game engine: Phaser 3 by photonstorm', {
       fontFamily: 'BitPotion',
       color: '#fff',
       fontSize: '35px',
     });
-    buttonCredits.setInteractive();
-    buttonCredits.on('pointerdown', () => {
-      this.scene.start(SCENES.CREDITS);
+    this.add.text(50, 390, 'Music: Space Cats - Magic Fly by Enjoyker', {
+      fontFamily: 'BitPotion',
+      color: '#fff',
+      fontSize: '35px',
     });
   }
 

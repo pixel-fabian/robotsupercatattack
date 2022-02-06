@@ -5,6 +5,7 @@ enum SCENES {
   GAME = 'sceneGame',
   GAMEOVER = 'sceneGameover',
   HIGHSCORE = 'sceneHighscore',
+  CREDITS = 'sceneCredits',
 }
 
 export default SCENES;

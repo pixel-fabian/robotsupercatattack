@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 import SceneLoad from './scenes/sceneLoad';
 import SceneMenu from './scenes/sceneMenu';
 import SceneGame from './scenes/sceneGame';
+import SceneHighscore from './scenes/sceneHighscore';
+import SceneCredits from './scenes/sceneCredits';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO, // WebGL if available
@@ -17,7 +19,7 @@ const config: Phaser.Types.Core.GameConfig = {
     },
   },
   pixelArt: true,
-  scene: [SceneLoad, SceneMenu, SceneGame],
+  scene: [SceneLoad, SceneMenu, SceneGame, SceneHighscore, SceneCredits],
 };
 
 window.onload = () => {
