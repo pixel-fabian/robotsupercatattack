@@ -19,6 +19,7 @@ export default class SceneLoad extends Phaser.Scene {
   preload(): void {}
 
   create(): void {
+    this.add.image(0, 0, TEXTURES.BACKGROUND_MENU).setOrigin(0, 0);
     // buttons
     const buttonPlay = this.add.text(50, 50, '< back', {
       fontFamily: 'BitPotion',
@@ -35,12 +36,17 @@ export default class SceneLoad extends Phaser.Scene {
       color: '#fff',
       fontSize: '35px',
     });
-    this.add.text(50, 360, 'Game engine: Phaser 3 by photonstorm', {
+    this.add.text(50, 360, 'Game engine: Phaser 3 by PhotonStorm', {
       fontFamily: 'BitPotion',
       color: '#fff',
       fontSize: '35px',
     });
     this.add.text(50, 390, 'Music: Space Cats - Magic Fly by Enjoyker', {
+      fontFamily: 'BitPotion',
+      color: '#fff',
+      fontSize: '35px',
+    });
+    this.add.text(50, 420, 'Font: BitPotion by Joeb Rogers (CC-BY)', {
       fontFamily: 'BitPotion',
       color: '#fff',
       fontSize: '35px',

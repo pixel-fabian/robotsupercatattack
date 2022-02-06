@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import SCENES from '../constants/SceneKeys';
+import TEXTURES from '../constants/TextureKeys';
 import AUDIO from '../constants/AudioKeys';
 
 export default class SceneMenu extends Phaser.Scene {
@@ -18,6 +19,7 @@ export default class SceneMenu extends Phaser.Scene {
   preload(): void {}
 
   create(): void {
+    this.add.image(0, 0, TEXTURES.BACKGROUND_MENU).setOrigin(0, 0);
     // sounds
     const music = this.sound.add(AUDIO.MUSIC_MENU, { loop: true });
     music.play();
