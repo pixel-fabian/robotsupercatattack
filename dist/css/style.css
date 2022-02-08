@@ -3,6 +3,10 @@
   src: url('../assets/fonts/BitPotion.ttf');
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #333;
   font-family: 'BitPotion', sans-serif;
@@ -10,7 +14,7 @@ body {
 }
 
 .wrapper {
-  max-width: 1028px;
+  max-width: 840px;
   margin: 0 auto;
   background: #eee;
   padding: 20px;
@@ -23,4 +27,5 @@ body {
 
 #game canvas {
   width: 100%;
+  max-width: 800px;
 }
