@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
-import SceneKeys from '../constants/SceneKeys';
-import TextureKeys from '../constants/TextureKeys';
+import SCENES from '../constants/SceneKeys';
+import TEXTURES from '../constants/TextureKeys';
+import AUDIO from '../constants/AudioKeys';
 import Player from '../objects/player';
 import Platforms from '../objects/platforms';
 
@@ -18,7 +19,7 @@ export default class SceneGame extends Phaser.Scene {
 
   constructor() {
     super({
-      key: SceneKeys.GAME,
+      key: SCENES.GAME,
     });
   }
 
@@ -28,41 +29,35 @@ export default class SceneGame extends Phaser.Scene {
 
   init(): void {}
 
-  preload(): void {
-    this.load.image(TextureKeys.BACKGROUND_BG, 'assets/img/clouds_bg.png');
-    this.load.image(TextureKeys.BACKGROUND_MG, 'assets/img/clouds_mg.png');
-    this.load.image(TextureKeys.BACKGROUND_FG, 'assets/img/clouds_fg.png');
-    this.load.image(
-      TextureKeys.PLATFORM_STRAIGHT,
-      'assets/img/platform_straight_01.png',
-    );
-    this.load.spritesheet(TextureKeys.CAT, 'assets/img/robocat_sprite.png', {
-      frameWidth: 50,
-      frameHeight: 28,
-    });
-  }
+  preload(): void {}
 
   create(): void {
+    // sounds
+    if (this.sound.get(AUDIO.MUSIC_MENU)) {
+      this.sound.get(AUDIO.MUSIC_MENU).stop();
+    }
+    const music = this.sound.add(AUDIO.MUSIC_GAME, { loop: true });
+    music.play();
     // store the width and height of the game screen
     const width = this.scale.width;
     const height = this.scale.height;
     // add background
     this.background_bg = this.add
-      .tileSprite(0, 0, 800, 533, TextureKeys.BACKGROUND_BG)
+      .tileSprite(0, 0, 800, 533, TEXTURES.BACKGROUND_BG)
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
     this.background_mg = this.add
-      .tileSprite(0, 0, 800, 533, TextureKeys.BACKGROUND_MG)
+      .tileSprite(0, 0, 800, 533, TEXTURES.BACKGROUND_MG)
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
     this.background_fg = this.add
-      .tileSprite(0, 0, 800, 533, TextureKeys.BACKGROUND_FG)
+      .tileSprite(0, 0, 800, 533, TEXTURES.BACKGROUND_FG)
       .setOrigin(0, 0)
       .setScrollFactor(0, 0);
     // create platforms
     this.platforms = new Platforms(this.physics.world, this);
     // create player
-    this.player = new Player(this, 100, 250, TextureKeys.CAT).setScale(2);
+    this.player = new Player(this, 100, 150, TEXTURES.CAT);
     // add collision
     this.physics.add.collider(
       this.player,
@@ -110,7 +105,7 @@ export default class SceneGame extends Phaser.Scene {
   gameOver() {
     this.player.die();
     this.scene.pause();
-    //this.scene.start(SceneKeys.GAMEOVER);
+    //this.scene.start(SCENES.GAMEOVER);
   }
 
   //////////////////////////////////////////////////

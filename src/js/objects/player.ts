@@ -1,18 +1,18 @@
-import TextureKeys from '../constants/TextureKeys';
-import StateKeys from '../constants/StateKeys';
+import TEXTURES from '../constants/TextureKeys';
+import STATES from '../constants/StateKeys';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   /**
    * Velocity for running
    */
-  private runVelocity: number = 180;
+  private runVelocity: number = 350;
 
   /**
    * Velocity for jumps
    */
   private jumpVelocity = {
-    singleJump: -400,
-    doubleJump: -300,
+    singleJump: -500,
+    doubleJump: -350,
   };
 
   constructor(
@@ -36,11 +36,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       'animationcomplete',
       (animation) => {
         switch (animation.key) {
-          case StateKeys.SINGLE_JUMP:
-            this.state = StateKeys.FALL;
+          case STATES.SINGLE_JUMP:
+            this.state = STATES.FALL;
             break;
-          case StateKeys.DOUBLE_JUMP:
-            this.state = StateKeys.FALL;
+          case STATES.DOUBLE_JUMP:
+            this.state = STATES.FALL;
             break;
         }
       },
@@ -55,8 +55,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   createAnimations() {
     this.anims.create({
-      key: StateKeys.RUN,
-      frames: this.anims.generateFrameNumbers(TextureKeys.CAT, {
+      key: STATES.RUN,
+      frames: this.anims.generateFrameNumbers(TEXTURES.CAT, {
         start: 0,
         end: 6,
       }),
@@ -64,8 +64,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: -1, // -1: infinity
     });
     this.anims.create({
-      key: StateKeys.SINGLE_JUMP,
-      frames: this.anims.generateFrameNumbers(TextureKeys.CAT, {
+      key: STATES.SINGLE_JUMP,
+      frames: this.anims.generateFrameNumbers(TEXTURES.CAT, {
         start: 5,
         end: 5,
       }),
@@ -73,8 +73,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: 1,
     });
     this.anims.create({
-      key: StateKeys.DOUBLE_JUMP,
-      frames: this.anims.generateFrameNumbers(TextureKeys.CAT, {
+      key: STATES.DOUBLE_JUMP,
+      frames: this.anims.generateFrameNumbers(TEXTURES.CAT, {
         start: 5,
         end: 5,
       }),
@@ -82,8 +82,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: 1,
     });
     this.anims.create({
-      key: StateKeys.DIE,
-      frames: this.anims.generateFrameNumbers(TextureKeys.CAT, {
+      key: STATES.DIE,
+      frames: this.anims.generateFrameNumbers(TEXTURES.CAT, {
         start: 5,
         end: 5,
       }),
@@ -94,33 +94,33 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   jump() {
     switch (this.state) {
-      case StateKeys.DOUBLE_JUMP:
+      case STATES.DOUBLE_JUMP:
         // do nothing
         return;
-      case StateKeys.SINGLE_JUMP:
+      case STATES.SINGLE_JUMP:
         //do double jump
-        this.state = StateKeys.DOUBLE_JUMP;
-        this.play(StateKeys.SINGLE_JUMP);
+        this.state = STATES.DOUBLE_JUMP;
+        this.play(STATES.SINGLE_JUMP);
         this.setVelocityY(this.jumpVelocity.doubleJump);
         break;
       default:
         //do single jump
-        this.state = StateKeys.SINGLE_JUMP;
-        this.play(StateKeys.SINGLE_JUMP);
+        this.state = STATES.SINGLE_JUMP;
+        this.play(STATES.SINGLE_JUMP);
         this.setVelocityY(this.jumpVelocity.singleJump);
         break;
     }
   }
 
   run() {
-    if (this.state === StateKeys.RUN) return;
-    this.state = StateKeys.RUN;
-    this.play(StateKeys.RUN);
+    if (this.state === STATES.RUN) return;
+    this.state = STATES.RUN;
+    this.play(STATES.RUN);
     this.setVelocityX(this.runVelocity);
   }
 
   die() {
-    if (this.state === StateKeys.DIE) return;
-    this.state = StateKeys.DIE;
+    if (this.state === STATES.DIE) return;
+    this.state = STATES.DIE;
   }
 }
