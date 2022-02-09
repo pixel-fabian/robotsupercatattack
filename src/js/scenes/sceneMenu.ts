@@ -21,8 +21,10 @@ export default class SceneMenu extends Phaser.Scene {
   create(): void {
     this.add.image(0, 0, TEXTURES.BACKGROUND_MENU).setOrigin(0, 0);
     // sounds
-    const music = this.sound.add(AUDIO.MUSIC_MENU, { loop: true });
-    music.play();
+    if (!this.sound.get(AUDIO.MUSIC_MENU)) {
+      const music = this.sound.add(AUDIO.MUSIC_MENU, { loop: true });
+      music.play();
+    }
     // buttons
     this._createMenuButton(400, 270, TEXTURES.BUTTON_PLAY, SCENES.GAME);
     this._createMenuButton(

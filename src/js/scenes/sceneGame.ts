@@ -33,6 +33,9 @@ export default class SceneGame extends Phaser.Scene {
 
   create(): void {
     // sounds
+    if (this.sound.get(AUDIO.MUSIC_MENU)) {
+      this.sound.get(AUDIO.MUSIC_MENU).stop();
+    }
     const music = this.sound.add(AUDIO.MUSIC_GAME, { loop: true });
     music.play();
     // store the width and height of the game screen
